@@ -56,16 +56,16 @@ describe('Testing orders Endpoints.', () => {
       .set('Authorization', `Bearer ${token}`);
     expect(response.status).toBe(200);
   });
-  it('POST /order without a token', async () => {
-    const response = await request.post('/order').send({
+  it('POST /order/create without a token', async () => {
+    const response = await request.post('/order/create').send({
       status: 'test',
       userId: 1,
     });
     expect(response.status).toBe(401);
   });
-  it('POST /order with a token', async () => {
+  it('POST /order/create with a token', async () => {
     const response = await request
-      .post('/order')
+      .post('/order/create')
       .send({
         status: 'test',
         userId: 1,
@@ -74,8 +74,8 @@ describe('Testing orders Endpoints.', () => {
     expect(response.status).toBe(200);
   });
 
-  it('PUT /order without prodiving a token', async () => {
-    const response = await request.put('/order').send({
+  it('PUT /order/update without prodiving a token', async () => {
+    const response = await request.put('/order/update').send({
       id: 1,
       status: 'update',
       userId: 1,
@@ -83,9 +83,9 @@ describe('Testing orders Endpoints.', () => {
     expect(response.status).toBe(401);
   });
 
-  it('PUT /order with providing a token', async () => {
+  it('PUT /order/update with providing a token', async () => {
     const response = await request
-      .put('/order')
+      .put('/order/update')
       .send({
         id: 1,
         status: 'update',
@@ -94,16 +94,16 @@ describe('Testing orders Endpoints.', () => {
       .set('Authorization', `Bearer ${token}`);
     expect(response.status).toBe(500);
   });
-  it('DELETE /order without prodiving a token', async () => {
-    const response = await request.delete('/order').send({
+  it('DELETE /order/delete without prodiving a token', async () => {
+    const response = await request.delete('/order/delete').send({
       id: 1,
     });
     expect(response.status).toBe(401);
   });
 
-  it('DELETE /order with providing a token', async () => {
+  it('DELETE /order/delete with providing a token', async () => {
     const response = await request
-      .delete('/order')
+      .delete('/order/delete')
       .send({
         id: 1,
       })

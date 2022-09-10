@@ -8,7 +8,7 @@ const hashPassword = (password: string) => {
   return bcrypt.hashSync(`${password}${config.pepper}`, salt)
 }
 class UsersModel {
-  async index(): Promise<User[]> {
+  index = async(): Promise<User[]> => {
     try {
       const connection = await client.connect();
       const sql = 'SELECT id, firstName, lastName FROM users';
@@ -22,7 +22,7 @@ class UsersModel {
     }
   }
 
-  async select(id: number): Promise<User> {
+  select = async(id: number): Promise<User> => {
     try {
       const connection = await client.connect();
       const sql = 'SELECT id, firstName, lastName FROM users WHERE id=($1)'
@@ -36,9 +36,9 @@ class UsersModel {
     }
   }
 
-  async create(
+  create = async(
     u: User
-  ): Promise<User> {
+  ): Promise<User> => {
     try {
       const connection = await client.connect()
       const sql =
@@ -57,9 +57,9 @@ class UsersModel {
     }
   }
 
-  async update(
+  update = async(
     u: User
-  ): Promise<User> {
+  ): Promise<User> => {
     try {
       const connection = await client.connect();
       const sql =
@@ -79,7 +79,7 @@ class UsersModel {
     }
   }
 
-  async delete(id: number): Promise<User> {
+  delete = async(id: number): Promise<User> => {
     try {
       const connection = await client.connect();
       const sql =

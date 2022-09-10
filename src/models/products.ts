@@ -15,7 +15,7 @@ class ProductsModel {
     };
   }
 
-  async index(): Promise<Product[]> {
+  index = async(): Promise<Product[]> => {
     try {
       const connection = await client.connect();
       const sql = 'SELECT * FROM products';
@@ -29,7 +29,7 @@ class ProductsModel {
     }
   }
 
-  async show(id: number): Promise<Product> {
+  show = async(id: number): Promise<Product> => {
     try {
       const connection = await client.connect();
       const sql = 'SELECT * FROM products WHERE id=($1)';
@@ -43,7 +43,7 @@ class ProductsModel {
     }
   }
 
-  async create(p : Product): Promise<Product> {
+  create = async(p : Product): Promise<Product> => {
     try {
       const connection = await client.connect();
       const sql =
@@ -58,7 +58,7 @@ class ProductsModel {
     }
   }
 
-  async update(p: Product): Promise<Product> {
+  update = async(p: Product): Promise<Product> => {
     try {
       const connection = await client.connect();
       const sql =
@@ -73,7 +73,7 @@ class ProductsModel {
     }
   }
 
-  async delete(id: number): Promise<Product> {
+  delete = async (id: number): Promise<Product> => {
     try {
       const connection = await client.connect();
       const sql = 'DELETE FROM products WHERE id=($1) RETURNING *';

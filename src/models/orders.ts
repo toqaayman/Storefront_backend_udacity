@@ -20,7 +20,7 @@ class OrdersModel {
     };
   }
 
-  async index(): Promise<Order[]> {
+ index = async(): Promise<Order[]> => {
     try {
       const connection = await client.connect();
       const sql = 'SELECT * FROM orders';
@@ -34,7 +34,7 @@ class OrdersModel {
     }
   }
 
-  async show(userId: number): Promise<Order[]> {
+  show = async (userId: number): Promise<Order[]> => {
     try {
       const connection = await client.connect();
       const sql = 'SELECT * FROM orders WHERE userId=($1)';
@@ -48,7 +48,7 @@ class OrdersModel {
     }
   }
 
-  async create(o: Order): Promise<Order> {
+  create = async (o: Order): Promise<Order> => {
     try {
       const connection = await client.connect();
       const sql =
@@ -70,7 +70,7 @@ class OrdersModel {
     }
   }
 
-  async update(o: Order): Promise<Order> {
+  update = async (o: Order): Promise<Order> => {
     try {
       const connection = await client.connect();
       const sql = 'UPDATE orders SET status=($2) WHERE id=($1) RETURNING *';
@@ -90,7 +90,7 @@ class OrdersModel {
     }
   }
 
-  async delete(id: number): Promise<Order> {
+  delete = async (id: number): Promise<Order> => {
     try {
       const connection = await client.connect();
       const sql = 'DELETE FROM orders WHERE id=($1) RETURNING *';

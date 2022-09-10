@@ -7,13 +7,11 @@ These are the notes from a meeting with the frontend developer that describe wha
 #### Products
 - Index 
   * Method           -  GET
-  * Authorization required    -No
   * Parameters        - none
-  * Usage             - list all products
+  * Use             - list all products
   * http://localhost:3000/products
 - Show
   * Method           -  GET
-  * Authorization required    - No
   * Parameters        - id
   * Usage             - list a specific product
   * http://localhost:3000/product/:id
@@ -22,20 +20,20 @@ These are the notes from a meeting with the frontend developer that describe wha
   * Authorization required    - Bearer <token>
   * Parameters        - name, price
   * Usage             -  create a new product
-  * http://localhost:3000/product
+  * http://localhost:3000/product/create
 - Update
   * Method           -  PUT
   * Authorization required    - Bearer <token>
   * Parameters        -  id, name, price
   * Usage             -  edit an exciting product
-  * http://localhost:3000/product
+  * http://localhost:3000/product/update
 
 - Delete
   * Method           -  DELETE
   * Authorization required    - Bearer <token>
   * Parameters        -  id
   * Usage             -  Delete an exciting product
-  * http://localhost:3000/product
+  * http://localhost:3000/product/delete
 
 #### Users
 - Index 
@@ -55,10 +53,9 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 - Create
   * Method           -  POST
-  * Authorization required    - No
   * Parameters        - firstName, lastName, password
   * Usage             -  create a new User
-  * http://localhost:3000/user
+  * http://localhost:3000/user/create
 
 
 - Update
@@ -66,26 +63,24 @@ These are the notes from a meeting with the frontend developer that describe wha
   * Authorization required    - Bearer <token>
   * Parameters        -  id, firstName, lastName, password
   * Usage             -  edit an exciting User
-  * http://localhost:3000/user
+  * http://localhost:3000/user/update
 
 - Delete
   * Method           -  DELETE
   * Authorization required    - Bearer <token>
   * Parameters        -  id
   * Usage             -  Delete an exciting User
-  * http://localhost:3000/user
+  * http://localhost:3000/user/delete
 
 #### Orders
 - Index 
   * Method           -  GET
-  * Authorization required    -No
   * Parameters        - none
   * Usage             - list all products
   * http://localhost:3000/products
 
 - Show 
   * Method           -  GET
-  * Authorization required    - No
   * Parameters        - id
   * Usage             - list a specific product
   * http://localhost:3000/product/:id

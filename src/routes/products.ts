@@ -1,76 +1,14 @@
-import ProductsModel from '../models/products';
-import { Application, Request, Response, NextFunction } from 'express';
+import ProductHandler from '../handlers/productHandlers';
+import { Application } from 'express';
 import AuthToken from '../middleware/auth.middleware';
 
-const products = new ProductsModel();
-
-const getAll = async (_req: Request, res: Response, next: NextFunction) => {
-  try {
-    const getProducts = await products.index();
-    res.send(getProducts);
-  } catch (error) {
-    next(error)
-  }
-};
-
-const get = async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    const id = Number(req.params.id);
-    const product = await products.show(id);
-    res.send({
-      status: 'success',
-      data: { product },
-      message: 'Products retrieved successfully'
-    });
-  } catch (error) {
-    next(error)
-  }
-};
-
-const create = async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    const newProduct = await products.create(req.body);
-    res.send({ status: 'success',
-    data: { ...newProduct },
-    message: 'Product created successfully'});
-  } catch (error) {
-    next(error)
-  }
-};
-
-const update = async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    const updatedProduct = await products.update(req.body);
-    res.send({
-      status: 'success',
-      data: { updatedProduct },
-      message: 'Product updated successfully'
-    });
-  } catch (error) {
-    next(error)
-  }
-};
-
-const deleteProduct = async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    const id = req.body.id;
-    const deletedProduct = await products.delete(id);
-    res.send({
-      status: 'success',
-      data: { deletedProduct },
-      message: 'Product deleted successfully'
-    });
-  } catch (error) {
-    next(error)
-  }
-};
 
 const ProductsRoutes = (app: Application) => {
-  app.get('/products', getAll);
-  app.get('/product/:id', get);
-  app.post('/product', AuthToken, create);
-  app.put('/product', AuthToken, update);
-  app.delete('/product', AuthToken, deleteProduct);
+  app.get('/products', ProductHandler.getAll);
+  app.get('/product/:id', ProductHandler.get);
+  app.post('/product/create', AuthToken, ProductHandler.create);
+  app.put('/product/update', AuthToken, ProductHandler.update);
+  app.delete('/product/delete', AuthToken, ProductHandler.deleteProduct);
 };
 
 export default ProductsRoutes;

@@ -7,13 +7,15 @@ const AuthToken = (
   next: NextFunction
 ) => {
   try {
-    const authorizationHeader = req.headers.authorization as string;
-    const token = authorizationHeader.split(' ')[1];
+    const authHead = req.headers.authorization as string;
+    const token: string = authHead ? authHead.split(' ')[1]: ''
     jwt.verify(token, process.env.TOKEN_SECRET as string);
-    next();
+    next()
     return;
-  } catch (error) {
-    return res.status(401).json({ error: 'Login Error, Please login again' });
+  } catch (err) {
+    if (err instanceof Error) {
+      res.status(401).send('Unauthenticated ' + err.message);
+    }
   }
 }
 

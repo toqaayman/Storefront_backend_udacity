@@ -45,16 +45,16 @@ describe('Testing products Endpoints.', () => {
     expect(response.status).toBe(500);
   });
 
-  it('POST /product without a token', async () => {
-    const response = await request.post('/product').send({
+  it('POST /product/create without a token', async () => {
+    const response = await request.post('/product/create').send({
       name: 'test',
       price: 123,
     });
     expect(response.status).toBe(401);
   });
-  it('POST /product with a token', async () => {
+  it('POST /product/create with a token', async () => {
     const response = await request
-      .post('/product')
+      .post('/product/create')
       .send({
         name: 'test',
         price: 123,
@@ -63,8 +63,8 @@ describe('Testing products Endpoints.', () => {
     expect(response.status).toBe(200);
   });
 
-  it('PUT /product without prodiving a token', async () => {
-    const response = await request.put('/product').send({
+  it('PUT /product/update without prodiving a token', async () => {
+    const response = await request.put('/product/update').send({
       id: 1,
       name: 'update',
       price: 321,
@@ -72,9 +72,9 @@ describe('Testing products Endpoints.', () => {
     expect(response.status).toBe(401);
   });
 
-  it('PUT /product with providing a token', async () => {
+  it('PUT /product/update with providing a token', async () => {
     const response = await request
-      .put('/product')
+      .put('/product/update')
       .send({
         id: 1,
         name: 'update',
@@ -83,16 +83,16 @@ describe('Testing products Endpoints.', () => {
       .set('Authorization', `Bearer ${token}`);
     expect(response.status).toBe(500);
   });
-  it('DELETE /product without prodiving a token', async () => {
-    const response = await request.delete('/product').send({
+  it('DELETE /product/delete without prodiving a token', async () => {
+    const response = await request.delete('/product/delete').send({
       id: 1,
     });
     expect(response.status).toBe(401);
   });
 
-  it('DELETE /product with providing a token', async () => {
+  it('DELETE /product/delete with providing a token', async () => {
     const response = await request
-      .delete('/product')
+      .delete('/product/delete')
       .send({
         id: 1,
       })
