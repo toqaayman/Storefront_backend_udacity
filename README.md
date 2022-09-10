@@ -31,6 +31,7 @@ DB_PASS=password
 BCRYPT_PASSWORD=Hashed-password
 SALT_ROUNDS=10
 TOKEN_SECRET=your-secret-token
+```
 ## Required Technologies
 Your application must make use of the following libraries:
 - Postgres for the database
@@ -39,7 +40,7 @@ Your application must make use of the following libraries:
 - db-migrate from npm for migrations
 - jsonwebtoken from npm for working with JWTs
 - jasmine from npm for testing
-```
+
 
 Next, start the Postgres server on Docker:
 
