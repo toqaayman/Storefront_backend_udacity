@@ -8,8 +8,8 @@ ___Table of Contents___
   - [Running the application](#running-the-application)
   - [Running the unit tests](#running-the-unit-tests)
   - [Set up Database](#Set-up-Database)
-    -[Create Databases](#Create-Databases)
-    -[Migrate Database](#Migrate-Database)
+    - [Create Databases](#Create-Databases)
+    - [Migrate Database](#Migrate-Database)
   - [Built With](#built-with)
 
 ## Getting Started
