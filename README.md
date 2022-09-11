@@ -7,6 +7,9 @@ ___Table of Contents___
     - [Setup environment](#setup-environment)
   - [Running the application](#running-the-application)
   - [Running the unit tests](#running-the-unit-tests)
+  - [Set up Database](#Set-up-Database)
+    -[Create Databases](#Create-Databases)
+    -[Migrate Database](#Migrate-Database)
   - [Built With](#built-with)
 
 ## Getting Started
@@ -63,6 +66,29 @@ Use the following command to run the unit tests:
 ```bash
 yarn test
 ```
+## Set up Database
+### Create Databases
+We shall create the dev and test database.
+
+- connect to the default postgres database as the server's root user `psql -U postgres`
+- In psql run the following to create a user 
+    - `CREATE USER shopping_user WITH PASSWORD 'user1234';`
+- In psql run the following to create the dev and test database
+    - `CREATE DATABASE storefront;`
+    - `CREATE DATABASE storefront_testing;`
+- Connect to the databases and grant all privileges
+    - Grant for dev database
+        - `\c storefront`
+        - `GRANT ALL PRIVILEGES ON DATABASE storefront TO shopping_user;`
+    - Grant for test database
+        - `\c storefront_testing`
+        - `GRANT ALL PRIVILEGES ON DATABASE storefront_testing TO shopping_user;`
+
+### Migrate Database
+Navigate to the root directory and run the command below to migrate the database 
+
+`db-migrate up`
+
 ## Built With
 - [NodeJS] - The JavaScript runtime
 - [Yarn] - The dependency manager

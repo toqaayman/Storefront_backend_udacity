@@ -150,5 +150,13 @@ These are the notes from a meeting with the frontend developer that describe wha
 | id | SERIAL | PRIMARY KEY |
 | status | VARCHAR(20) | |
 | userId |INT |  REFERENCES users(id) |
-| quantity |INT | ------------------  |
+| quantity |INT | |
 | ProductID |INT |  REFERENCES products(id) |
+
+#### Orders-products Table
+| Data | Data Types | Constraints  |
+| ------------------ | ------------------ |  ------------------ |
+| id | SERIAL | |
+| OrderID | INT | REFERENCES orders(id) |
+| ProductID |INT | REFERENCES products(id) |
+| quantity |INT | |
